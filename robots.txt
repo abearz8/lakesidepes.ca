@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Allow all pages to be crawled
+Allow: /index.html
+Allow: /assessments.html
+Allow: /educational.html
+Allow: /treatment.html
+Allow: /team.html
+Allow: /faq.html
+Allow: /contact-us.html
+Allow: /andrea-koster-baier.html
+Allow: /sanaz-mehranvar.html
+Allow: /christine-vanderheiden.html
+Allow: /sumati-kanwar-chauhan.html
+Allow: /julie-moscato.html
+Allow: /daman-sidhu.html
+
+# Disallow system files and directories
+Disallow: /.DS_Store
+Disallow: /401.html
+Disallow: /404.html
+Disallow: /services.html
+
+# Sitemap location
+Sitemap: https://lakesidepes.ca/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1 

@@ -169,7 +169,7 @@
           "ease-in-out-quad": [
             "cubic-bezier(0.455, 0.030, 0.515, 0.955)",
             function(a2, b2, c2, d2) {
-              return (a2 /= d2 / 2) < 1 ? c2 / 2 * a2 * a2 + b2 : -c2 / 2 * (--a2 * (a2 - 2) - 1) + b2;
+              return (a2 /= d2 / 2) < 1 ? c2 / 2 * a2 * a2 + b2 : -c2 / 2 * ((a2 -= 2) * a2 - 2) + b2;
             }
           ],
           "ease-in-cubic": [
@@ -352,15 +352,8 @@
           };
         }(), L = l(function(b2) {
           function d2(a2, b3) {
-            var c2 = k(("" + a2).split(B)), d3 = c2[0];
-            b3 = b3 || {};
-            var e3 = Y[d3];
-            if (!e3)
-              return j("Unsupported property: " + d3);
-            if (!b3.weak || !this.props[d3]) {
-              var f3 = e3[0], g3 = this.props[d3];
-              return g3 || (g3 = this.props[d3] = new f3.Bare()), g3.init(this.$el, c2, e3, b3), g3;
-            }
+            var c2 = new M.Bare();
+            return c2.init(a2, b3);
           }
           function e2(a2, b3, c2) {
             if (a2) {
@@ -2335,7 +2328,6 @@
         };
       }
     }
-  });
 
   // node_modules/redux/lib/applyMiddleware.js
   var require_applyMiddleware = __commonJS({
@@ -10748,7 +10740,7 @@
   }) {
     const { ixData: ixData2, ixSession: ixSession2 } = store.getState();
     const { actionLists, events } = ixData2;
-    const event = events[eventId];
+    const event = events[eventId] || {};
     const actionList = actionLists[actionListId];
     if (actionList && actionList.useFirstGroupAsInitialState) {
       const initialStateItems = (0, import_get2.default)(
@@ -12843,7 +12835,7 @@
         var google = null;
         var $maps;
         var namespace = ".w-widget-map";
-        var googleMapsApiKey = "AIzaSyApxQ4dNwwIEbzkVz5eYQw5h5H_r9AzL5M";
+        // Google Maps API key removed (was unused and expired)
         api.ready = function() {
           if (!Webflow.env()) {
             initMaps();
@@ -12856,8 +12848,8 @@
             return;
           }
           if (google === null) {
-            $.getScript("https://maps.googleapis.com/maps/api/js?v=3.31&sensor=false&callback=_wf_maps_loaded&key=" + googleMapsApiKey);
-            window._wf_maps_loaded = mapsLoaded;
+            // Google Maps API loading removed (not used)
+            // window._wf_maps_loaded = mapsLoaded;
           } else {
             mapsLoaded();
           }
